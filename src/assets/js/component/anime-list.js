@@ -1,0 +1,140 @@
+import "./anime-item.js";
+
+class AnimeList extends HTMLElement {
+  connectedCallback() {
+      this.innerHTML = 
+      `
+      <div class="container empty-container center-align">
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+    
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+    
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+    
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      `;
+  }
+
+  searchConnected() {
+    this.innerHTML = 
+    `
+    <div class="container empty-container center-align">
+      <div class="empty-text">
+        <h1><i class="fas fa-search"></i></h1>
+        <h5>Search your anime first.</h5>
+      </div>
+    </div>
+    `;
+  }
+
+  set load(list) {
+      this.list = list;
+      this.render();
+  }
+
+  render() {
+    this.innerHTML = "";
+    
+    this.list.forEach( (anime, idx) => {
+        const href = document.createElement("a");
+        href.setAttribute("href", `#anime?id=${anime.mal_id}`);
+
+        const itemElement = document.createElement("anime-item");
+
+        itemElement.load = anime;
+
+        href.appendChild(itemElement);
+        this.appendChild(href);
+
+        if( idx !== this.list.length - 1 ) {
+            const divider = document.createElement("hr");
+            this.appendChild(divider);
+        }
+    });
+  }
+
+  isEmpty() {
+    this.innerHTML = 
+    `
+    <div class="container empty-container center-align">
+      <div class="empty-text">
+        <h1><i class="fas fa-search"></i></h1>
+        <h4>Not Found</h4>
+      </div>
+    </div>
+    `
+  }
+
+  savedIsEmpty() {
+    this.innerHTML = 
+    `
+    <div class="container empty-container center-align">
+      <div class="empty-text">
+        <h1><i class="fas fa-list"></i></h1>
+        <h4>Your list is empty.</h4>
+      </div>
+    </div>
+    `
+  }
+
+  noInternet() {
+    this.innerHTML = 
+    `
+    <div class="container empty-container center-align">
+      <div class="empty-text">
+        <h1><i class="fas fa-exclamation-circle"></i></h1>
+        <h4>No Internet Access.</h4>
+      </div>
+    </div>
+    `
+  }
+
+  error() {
+    this.innerHTML = 
+    `
+    <div class="container empty-container center-align">
+      <div class="empty-text">
+        <h1><i class="fas fa-exclamation-circle"></i></h1>
+        <h4>Something went wrong.</h4>
+      </div>
+    </div>
+    `
+  }
+}
+
+customElements.define("anime-list", AnimeList);

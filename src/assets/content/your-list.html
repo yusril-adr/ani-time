@@ -1,0 +1,37 @@
+<div class="navbar-fixed">
+    <nav class="light-blue darken-3">
+        <div class="nav-wrapper container">
+            <span class="sidenav-trigger back-trigger"><i class="fas fa-arrow-left"></i></span>
+            <span class="brand-logo center">YOUR LIST</span>
+        </div>
+    </nav>
+</div>
+
+<main class="body-content">
+    <div class="container your-list-page">
+        <div class="row teal lighten-5 page-form">
+            <div class="input-field col s6">
+                <select id="sort">
+                    <option value="added">Date Added</option>
+                    <option value="name">Name</option>
+                </select>
+                <label>Sort by</label>
+            </div>
+
+            <div class="input-field col s6">
+                <select id="direction">
+                    <option value="descending">Newest</option>
+                    <option value="ascending">Oldest</option>
+                </select>
+                <label>Direction</label>
+            </div>
+
+            <div class="input-field col s12">
+                <input id="search" type="text">
+                <label for="year-input">Search</label>
+            </div>
+        </div>
+
+        <anime-list></anime-list>
+    </div>
+</main>

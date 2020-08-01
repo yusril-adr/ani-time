@@ -1,0 +1,40 @@
+<div class="navbar-fixed">
+    <nav class="light-blue darken-3">
+        <div class="nav-wrapper container">
+            <span data-target="side-nav" class="sidenav-trigger"><i class="fas fa-bars"></i></span>
+            <a class="brand-logo brand-title center">ANi-TIME</a>            
+        </div>
+    </nav>
+</div>
+
+<ul class="sidenav" id="side-nav">
+  <li>
+    <div class="user-view">
+      <div class="background blue darken-3"></div>
+      <span class="white-text name">User</span>
+      <span class="white-text email">user@mail.com</span>
+    </div>
+  </li>
+  <li><a class="subheader">Anime List</a></li>
+  <li><a class="waves-effect" href="#top-list"><i class="fas fa-thumbs-up"></i>Top List</a></li>
+  <li><a class="waves-effect" href="#season-list"><i class="fas fa-clock"></i>Season List</a></li>
+  <li><a class="waves-effect" href="#search"><i class="fas fa-search"></i>Search Anime</a></li>
+  <li><a class="waves-effect" href="#your-list"><i class="fas fa-star"></i>Your List</a></li>
+  <li><a class="subheader">User</a></li>
+  <li><a class="waves-effect"><i class="fas fa-cog"></i>Setting</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="waves-effect about-trigger"><i class="fas fa-info-circle"></i>About</a></li>
+</ul>
+
+<main class="body-content">
+  <div class="container home-page">
+      <h5 class="blue-text text-accent-2">Today</h5><hr>
+      <home-carousel class="today-list"></home-carousel>
+      
+      <h5 class="blue-text text-accent-2">Top</h5><hr>
+      <home-carousel class="top-list"></home-carousel>
+  
+      <h5 class="blue-text text-accent-2">This Season</h5><hr>
+      <home-carousel class="season-list"></home-carousel>
+  </div>
+</main>

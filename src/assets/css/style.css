@@ -1,0 +1,289 @@
+@import url("~materialize-css/dist/css/materialize.min.css");
+@import url("~@fortawesome/fontawesome-free/css/all.min.css");
+@import url("~owl.carousel/dist/assets/owl.carousel.min.css");
+
+/* Font Section */
+
+@font-face{
+    font-family: 'Angies New House';
+    font-style: normal;
+    src: url('../font/Recursive.ttf') format('truetype');
+}
+
+/* Animation Section */
+
+@keyframes appear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    } to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    } to {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+.fade {
+    opacity: 0;
+    animation: fade .3s forwards;
+}
+
+#btn-appear {
+    animation: appear .3s forwards;
+}
+
+#btn-disappear {
+    animation: disappear .3s forwards;
+}
+
+.fixed-action-btn {
+    transform: scale(0);
+}
+
+/* Global Section */
+
+.brand-logo {
+    font-family: "Angies New House", monospace;
+    letter-spacing: 1px;
+}
+
+.body-content {
+    padding: 10px 0 56px;
+}
+
+.loading-container {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.full-loading-container {
+    position: fixed;
+    display: flex;
+    background-color: rgba(0, 0, 0, .5);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.full-loading-container .full-loading {
+    margin: auto;
+}
+
+.empty-container {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-container .empty-text {
+    color: #9e9e9e;
+}
+
+.empty-container .empty-text h1 {
+    font-size: 7rem;
+}
+
+.input-field {
+    margin-bottom: 0;
+}
+
+.page-form {
+    border-radius: 12px;
+}
+
+hr {
+    height: 1px;
+    background-color: #90a4ae  ;
+    border: none;
+}
+
+anime-item {
+    display: flex;
+}
+
+anime-item .item-img {
+    max-width: 26vw;
+}
+
+anime-item .item-img img {
+    width: 100%;
+}
+
+anime-item .item-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+anime-item .item-caption span {
+    color: black;
+}
+
+anime-item .item-caption .item-title {
+    font-size: 5vw;
+    margin-bottom: 5px;
+}
+
+anime-item .item-caption .item-subcaption {
+    font-size: 3.5vw;
+}
+
+anime-item .item-subcaption span {
+    margin-right: 1rem;
+    color: #455a64;
+}
+
+/* Home Section */
+
+.home-page .item-container .img-container {
+    height: 36vw;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Anime Section */
+.anime-page {
+    padding-top: 0;
+}
+
+.header-container {
+    display: flex;
+    padding: 1.5rem 0;
+}
+
+.header-container .img-container {
+    max-width: 35vw;
+    overflow: hidden;
+    margin-right: 1.5rem;
+}
+
+.header-container .img-container img {
+    width: 100%;
+}
+
+.header-caption {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-caption .header-title {
+    font-size: 5vw;
+}
+
+.header-caption .header-status {
+    font-size: 3.5vw;
+    color: #e0e0e0;
+    margin-top: 1rem;
+}
+
+.anime-page .tab-text {
+    color: rgba(255, 255, 255, .5) !important;
+}
+
+.anime-page .tab-text.active {
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.anime-page .tabs .indicator {
+    background-color: rgba(255, 255, 255, 1) !important;
+}
+
+.anime-page .section-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+
+.anime-page .section-detail {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-bottom: 0;
+    max-width: 45%;
+}
+
+.anime-page .genre-container {
+    padding: .7rem 0;
+}
+
+.anime-page .genre-item {
+    background-color: #01579b;
+    color: white;
+    padding: 7px;
+    border-radius: 7px;
+}
+
+/* Responsive Section */
+
+@media (min-width: 601px) {
+    .home-page .item-container .img-container {
+        height: 25vw;
+    }
+}
+
+@media (min-width: 663px) {
+    anime-item .item-img {
+        max-width: 12vw;
+    }
+    
+    anime-item .item-caption .item-title {
+        font-size: 3vw;
+    }
+    
+    anime-item .item-caption .item-subcaption {
+        font-size: 2vw;
+    }
+
+    .header-caption .header-title {
+        font-size: 4vw;
+    }
+    
+    .header-caption .header-status {
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 993px) {
+    .home-page .item-container .img-container {
+        height: 21vw;
+    }
+
+    .header-caption .header-title {
+        font-size: 2.5vw;
+    }
+    
+    .header-caption .header-status {
+        font-size: 1.5vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .home-page .item-container .img-container {
+        height: 17vw;
+    }
+}

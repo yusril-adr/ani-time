@@ -1,7 +1,22 @@
 import '../component/home-carousel.js';
+import { getUser } from '../db.js';
+import Swal from 'sweetalert2';
 
 const loadHome = async () => {
     const base_url = "https://api.jikan.moe/v3";
+
+    getUser()
+    .then( data => {
+        if (!data) {
+            const newData = {
+                id : 0,
+                name : "User",
+                email : "user@mail.com"
+            }
+
+            updateUser(newData);
+        }
+    })
 
     // Initiating Date & Season
     const date = new Date();
@@ -80,6 +95,27 @@ const loadHome = async () => {
                 items:5
             },
         }
+    });
+
+    document.querySelector(".about-trigger").addEventListener("click", () => {
+        Swal.fire({
+            title: 'About',
+            html: `
+                <div class= "about">
+                    <span>Created by Yusril A. P.</span>
+                    <span>Logo by Yusril A. P.</span>
+                    <span>Thanks to <a href="https://jikan.moe">jikan API</a></span>
+                </div>
+            `,
+            footer: `
+                <div class= "about-footer center-align">
+                    <a href="https://www.instagram.com/yusril_adr"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/yusril.adr"><i class="fab fa-facebook"></i></a>
+                    <a href="https://github.com/yusril-adr"><i class="fab fa-github"></i></a>
+                </div>
+            `,
+            icon: 'info',
+        })
     });
 }
 

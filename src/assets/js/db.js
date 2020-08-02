@@ -51,6 +51,15 @@ const getList = () => {
     });
 };
 
+const deleteList = () => {
+    dbPromised
+    .then( db => {
+        const tx = db.transaction("anime-list", "readwrite");
+        const store = tx.objectStore("anime-list");
+        return store.clear();
+    });
+}
+
 const addAnime= anime => {
     dbPromised
     .then( db => {
@@ -83,4 +92,4 @@ const deleteAnime= id => {
     });
 }
 
-export { updateUser, getUser, addAnime, getList, getAnime, deleteAnime };
+export { updateUser, getUser, addAnime, getList, getAnime, deleteList, deleteAnime };

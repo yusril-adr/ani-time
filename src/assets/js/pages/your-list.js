@@ -41,26 +41,22 @@ const loadYourList = () => {
 
     getList()
     .then( list => {
-        if (list.length === 0) {
-            listElement.savedIsEmpty();
-        } else {
-            listElement.load = descending(list, "date_add_list");
+        listElement.load = descending(list, "date_add_list");
 
-            // change dir event when first load
-            sortDir.addEventListener("change", () => {
-                switch(sortDir.value) {
-                    case "descending":
-                        sortList = descending(list, "date_add_list");
-                    break;
+        // change dir event when first load
+        sortDir.addEventListener("change", () => {
+            switch(sortDir.value) {
+                case "descending":
+                    sortList = descending(list, "date_add_list");
+                break;
 
-                    case "ascending":
-                        sortList = ascending(list, "date_add_list");
-                    break;
-                }
+                case "ascending":
+                    sortList = ascending(list, "date_add_list");
+                break;
+            }
 
-                listElement.load = sortList;
-            });
-        }
+            listElement.load = sortList;
+        });
 
         // Sort Form
         

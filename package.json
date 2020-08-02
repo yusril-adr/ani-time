@@ -43,6 +43,7 @@
     "jquery": "^3.5.1",
     "material-design-icons": "^3.0.1",
     "materialize-css": "^1.0.0",
-    "owl.carousel": "^2.3.4"
+    "owl.carousel": "^2.3.4",
+    "sweetalert2": "^9.17.1"
   }
 }

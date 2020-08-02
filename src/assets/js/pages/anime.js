@@ -41,9 +41,10 @@ const loadAnime = async () => {
                 animeData = anime;
 
                 animeElem.load = anime;
-            }).catch( () => {
-                animeElem.error();
-            });
+            })
+            // .catch( () => {
+            //     animeElem.error();
+            // });
 
             notSaved();
         }
@@ -74,15 +75,15 @@ const loadAnime = async () => {
 
     // Tab
     const tabsElem = document.querySelector(".tabs");
-    const instance = M.Tabs.init(tabsElem);
+    const instance = M.Tabs.init(tabsElem, {swipeable: true});
 
-    document.querySelectorAll(".tab-text").forEach( tab => {
-        tab.addEventListener("click", ()=> {
-            if(tab.innerHTML.toLowerCase() === "detail") animeElem.detail();
-            if(tab.innerHTML.toLowerCase() === "synopsis") animeElem.synopsis();
-            if(tab.innerHTML.toLowerCase() === "trailer") animeElem.trailer();
-        });
-    });
+    // document.querySelectorAll(".tab-text").forEach( tab => {
+    //     tab.addEventListener("click", ()=> {
+    //         if(tab.innerHTML.toLowerCase() === "detail") animeElem.detail();
+    //         if(tab.innerHTML.toLowerCase() === "synopsis") animeElem.synopsis();
+    //         if(tab.innerHTML.toLowerCase() === "trailer") animeElem.trailer();
+    //     });
+    // });
 }
 
 export default loadAnime;

@@ -1,4 +1,3 @@
-import '../../../node_modules/owl.carousel/dist/owl.carousel.min.js';
 import { getUser } from './db.js';
 import notFoundContent from '../content/page-404.html'
 import homeContent from '../content/home.html';
@@ -13,6 +12,8 @@ import yourListContent from '../content/your-list.html';
 import loadYourList from './pages/your-list.js'; 
 import animeContent from '../content/anime.html';
 import loadAnime from './pages/anime.js';
+import settingContent from '../content/setting.html';
+import loadSetting from './pages/setting.js';
 
 const loadPage = () => {
     const wrapper = document.querySelector(".wrapper");
@@ -62,6 +63,10 @@ const loadPage = () => {
 
         case "anime":
             htmlContent = animeContent;
+        break;
+
+        case "setting":
+            htmlContent = settingContent;
         break;
 
         default :
@@ -142,6 +147,10 @@ const backPage = () => {
             htmlContent = animeContent;
         break;
 
+        case "setting":
+            htmlContent = settingContent;
+        break;
+
         default :
             htmlContent = notFoundContent;
     }
@@ -197,6 +206,10 @@ const loadJS = () => {
 
         case "anime":
             loadAnime();
+        break;
+
+        case "setting":
+            loadSetting();
         break;
     }
 

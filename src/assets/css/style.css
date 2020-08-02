@@ -1,35 +1,73 @@
-@import url("~materialize-css/dist/css/materialize.min.css");
-@import url("~@fortawesome/fontawesome-free/css/all.min.css");
-@import url("~material-design-icons/iconfont/material-icons.css");
-@import url("~owl.carousel/dist/assets/owl.carousel.min.css");
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
 
 /* Font Section */
 
 @font-face{
-    font-family: 'Angies New House';
+    font-family: 'Recursive';
     font-style: normal;
     src: url('../font/Recursive.ttf') format('truetype');
 }
 
 /* Animation Section */
 
-@keyframes appear {
+@-webkit-keyframes appear {
     from {
-        transform: scale(0);
+        -webkit-transform: scale(0);
+                transform: scale(0);
         opacity: 0;
     } to {
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         opacity: 1;
+    }
+}
+
+@keyframes appear {
+    from {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        opacity: 0;
+    } to {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes disappear {
+    from {
+        -webkit-transform: scale(1);
+                transform: scale(1);
+        opacity: 1;
+    } to {
+        -webkit-transform: scale(0);
+                transform: scale(0);
+        opacity: 0;
     }
 }
 
 @keyframes disappear {
     from {
-        transform: scale(1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
         opacity: 1;
     } to {
-        transform: scale(0);
+        -webkit-transform: scale(0);
+                transform: scale(0);
         opacity: 0;
+    }
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
     }
 }
 
@@ -43,25 +81,30 @@
 
 .fade {
     opacity: 0;
-    animation: fade .3s forwards;
+    -webkit-animation: fade .3s forwards;
+            animation: fade .3s forwards;
 }
 
 #btn-appear {
-    animation: appear .3s forwards;
+    -webkit-animation: appear .3s forwards;
+            animation: appear .3s forwards;
 }
 
 #btn-disappear {
-    animation: disappear .3s forwards;
+    -webkit-animation: disappear .3s forwards;
+            animation: disappear .3s forwards;
 }
 
 .fixed-action-btn {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+            transform: scale(0);
 }
 
 /* Global Section */
 
 .brand-logo {
-    font-family: "Angies New House", monospace;
+    font-family: "Recursive", monospace;
     letter-spacing: 1px;
 }
 
@@ -71,13 +114,21 @@
 
 .loading-container {
     height: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .full-loading-container {
     position: fixed;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     background-color: rgba(0, 0, 0, .5);
     top: 0;
@@ -93,9 +144,15 @@
 
 .empty-container {
     height: 400px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .empty-container .empty-text {
@@ -121,6 +178,8 @@ hr {
 }
 
 anime-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
@@ -133,9 +192,16 @@ anime-item .item-img img {
 }
 
 anime-item .item-caption {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin-left: 10px;
 }
 
@@ -161,9 +227,36 @@ anime-item .item-subcaption span {
 
 .home-page .item-container .img-container {
     height: 36vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     overflow: hidden;
+}
+
+.about {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+}
+
+.about-footer {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
 }
 
 /* Anime Section */
@@ -172,6 +265,8 @@ anime-item .item-subcaption span {
 }
 
 .header-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding: 1.5rem 0;
 }
@@ -187,8 +282,13 @@ anime-item .item-subcaption span {
 }
 
 .header-caption {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .header-caption .header-title {
@@ -214,15 +314,26 @@ anime-item .item-subcaption span {
 }
 
 .anime-page .section-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     color: black;
 }
 
 .anime-page .section-detail {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     text-align: right;
     margin-bottom: 0;
     max-width: 45%;
@@ -239,11 +350,106 @@ anime-item .item-subcaption span {
     border-radius: 7px;
 }
 
+/* Setting Section */
+.setting-container {
+    margin-top: 2rem;
+}
+
+.setting-page .input-field label {
+    color: #0288d1;
+}
+
+.setting-page .input-field input::-webkit-input-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input::-moz-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input:-ms-input-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input::-ms-input-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input::placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input:focus::-webkit-input-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input:focus::-moz-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input:focus:-ms-input-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input:focus::-ms-input-placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input:focus::placeholder {
+    color: #80cbc4;
+    opacity: 1;
+}
+
+.setting-page .input-field input[type=text] {
+    border-bottom: 1px solid #0288d1;
+}
+
+.setting-page .input-field input[type=email] {
+    border-bottom: 1px solid #0288d1;
+}
+
+.setting-page .input-field .prefix {
+    color: #0288d1;
+}
+
+.setting-page .input-field .prefix.active {
+    color: #26a69a;
+}
+
+.setting-page .input-field .helper-text {
+    color: #0288d1;
+}
+
+.setting-page .btn-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 2rem;
+}
+
 /* Responsive Section */
 
 @media (min-width: 601px) {
     .home-page .item-container .img-container {
         height: 25vw;
+    }
+}
+
+@media (max-width: 601px) {
+    .sidenav {
+        width: 240px;
     }
 }
 

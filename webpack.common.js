@@ -61,7 +61,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
-            'window.jQuery': 'jquery'
+            'window.jQuery': 'jquery',
+            Swal: 'sweetalert2'
           }),
         // HTML Webpack Plugin
         new HtmlWebpackPlugin({

@@ -1,7 +1,13 @@
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'material-design-icons/iconfont/material-icons.css';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
+
 import "../css/style.css";
-import "../../../node_modules/materialize-css/dist/js/materialize.min.js";
+
 import { loadPage, backPage } from "./loadPage.js";
-import { updateUser, getUser } from './db.js';
 
 const isBack = (now, then) => {
     const pageOfList = [
@@ -21,18 +27,6 @@ const isBack = (now, then) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    getUser(0)
-    .then( data => {
-        if (!data) {
-            const newData = {
-                id : 0,
-                name : "User",
-                email : "user@mail.com"
-            }
-
-            updateUser(newData);
-        }
-    })
     loadPage();
 
     const loading = document.querySelector(".loading-container");

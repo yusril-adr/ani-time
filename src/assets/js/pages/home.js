@@ -5,8 +5,8 @@ const loadHome = async () => {
 
     // Initiating Date & Season
     const date = new Date();
-    const dayList = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-    const day = dayList[date.getDay()-1];
+    const dayList = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    const day = dayList[date.getDay()];
     const year = date.getFullYear();
     let season;
     if (date.getMonth() <= 2) {

@@ -1,18 +1,22 @@
 <div class="navbar-fixed">
     <nav class="light-blue darken-3">
         <div class="nav-wrapper container">
-            <span class="sidenav-trigger back-trigger"><i class="fas fa-arrow-left"></i></span>
             <span class="brand-logo center">SEARCH</span>
+
+            <ul class="left">
+                <li class="waves-effect back-trigger"><a><i class="material-icons">arrow_back</i></a></li>
+            </ul>
         </div>
     </nav>
 </div>
 
 <main class="body-content">
     <div class="container search-page">
-        <div class="row teal lighten-5 page-form">
+        <div class="row page-form">
             <div class="input-field col s12">
-                <input id="search" type="text">
-                <label for="year-input">Search</label>
+                <i class="material-icons prefix">search</i>
+                <input placeholder="Search" id="search" type="text">
+                <label class="active" for="search">Search</label>
             </div>
         </div>
         <anime-list></anime-list>

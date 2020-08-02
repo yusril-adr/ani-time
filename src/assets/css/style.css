@@ -1,5 +1,6 @@
 @import url("~materialize-css/dist/css/materialize.min.css");
 @import url("~@fortawesome/fontawesome-free/css/all.min.css");
+@import url("~material-design-icons/iconfont/material-icons.css");
 @import url("~owl.carousel/dist/assets/owl.carousel.min.css");
 
 /* Font Section */
@@ -110,7 +111,7 @@
 }
 
 .page-form {
-    border-radius: 12px;
+    background-color: white;
 }
 
 hr {

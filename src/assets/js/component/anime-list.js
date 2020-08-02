@@ -55,7 +55,7 @@ class AnimeList extends HTMLElement {
     `
     <div class="container empty-container center-align">
       <div class="empty-text">
-        <h1><i class="fas fa-search"></i></h1>
+        <i class="material-icons large">search</i>
         <h5>Search your anime first.</h5>
       </div>
     </div>
@@ -93,7 +93,7 @@ class AnimeList extends HTMLElement {
     `
     <div class="container empty-container center-align">
       <div class="empty-text">
-        <h1><i class="fas fa-search"></i></h1>
+        <i class="material-icons large">block</i>
         <h4>Not Found</h4>
       </div>
     </div>
@@ -105,7 +105,7 @@ class AnimeList extends HTMLElement {
     `
     <div class="container empty-container center-align">
       <div class="empty-text">
-        <h1><i class="fas fa-list"></i></h1>
+        <i class="material-icons large">list</i>
         <h4>Your list is empty.</h4>
       </div>
     </div>
@@ -117,7 +117,7 @@ class AnimeList extends HTMLElement {
     `
     <div class="container empty-container center-align">
       <div class="empty-text">
-        <h1><i class="fas fa-exclamation-circle"></i></h1>
+        <i class="material-icons large">portable_wifi_off</i>
         <h4>No Internet Access.</h4>
       </div>
     </div>
@@ -129,7 +129,7 @@ class AnimeList extends HTMLElement {
     `
     <div class="container empty-container center-align">
       <div class="empty-text">
-        <h1><i class="fas fa-exclamation-circle"></i></h1>
+        <i class="material-icons large">error_outline</i>
         <h4>Something went wrong.</h4>
       </div>
     </div>

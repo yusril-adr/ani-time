@@ -4,6 +4,8 @@ const searchList = (word) => {
     const base_url = "https://api.jikan.moe/v3";
     const listElement = document.querySelector(".search-page anime-list");
 
+    listElement.connectedCallback();
+
     fetch(`${base_url}/search/anime?q=${word}`)
     .then( response => {
         if ( response.status !== 200 ) { 
@@ -14,7 +16,8 @@ const searchList = (word) => {
     }).then( json => {
         return json.results;
     }).then( animeList => {
-        listElement.load = animeList;
+        if (animeList.length > 0) listElement.load = animeList;
+        else listElement.isEmpty();
     }).catch( () => {
         listElement.error();
     });
@@ -29,6 +32,8 @@ const loadSearch = () => {
     searchElement.addEventListener("keypress", event => {
         if (event.key === "Enter" && searchElement.value !== "") {
             searchList(searchElement.value);
+        } else {
+            listElement.searchConnected();
         }
     });
 }

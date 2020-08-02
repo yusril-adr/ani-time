@@ -2,6 +2,8 @@ const updateList = (year, season, type) => {
     const base_url = "https://api.jikan.moe/v3";
     const listElement = document.querySelector("anime-list");
 
+    listElement.connectedCallback();
+
     fetch(`${base_url}/season/${year}/${season}`)
     .then( response => {
         if ( response.status !== 200 ) { 

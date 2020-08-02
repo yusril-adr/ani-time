@@ -4,6 +4,8 @@ const fetchList = (type) => {
     const base_url = "https://api.jikan.moe/v3";
     const listElement = document.querySelector(".top-list-page anime-list");
 
+    listElement.connectedCallback();
+
     fetch(`${base_url}/top/anime`)
     .then( response => {
         if ( response.status !== 200 ) { 

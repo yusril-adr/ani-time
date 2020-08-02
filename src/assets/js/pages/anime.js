@@ -2,15 +2,15 @@ import '../component/anime-detail.js';
 import { addAnime, getAnime, deleteAnime } from '../db.js';
 
 const isSaved = () => {
-    const saveBtn = document.querySelector("#saveBtn");
+    const saveBtn = document.querySelector("#saveBtn a");
     saveBtn.setAttribute("saved", "true");
-    saveBtn.innerHTML = '<i class="fas fa-bookmark"></i>';
+    saveBtn.innerHTML = '<i class="material-icons left">bookmark</i><span class="hide-on-small-only">Bookmark</span>';
 }
 
 const notSaved = () => {
-    const saveBtn = document.querySelector("#saveBtn");
+    const saveBtn = document.querySelector("#saveBtn a");
     saveBtn.setAttribute("saved", "false");
-    saveBtn.innerHTML = '<i class="far fa-bookmark"></i>';
+    saveBtn.innerHTML = '<i class="material-icons left">bookmark_border</i><span class="hide-on-small-only">Bookmark</span>';
 }
 
 const loadAnime = async () => {
@@ -50,7 +50,7 @@ const loadAnime = async () => {
     });
     
     // Save to Db
-    const saveBtn = document.querySelector("#saveBtn");
+    const saveBtn = document.querySelector("#saveBtn a");
     saveBtn.addEventListener("click", () => {
         switch(saveBtn.getAttribute("saved")) {
             case "true":
@@ -80,6 +80,7 @@ const loadAnime = async () => {
         tab.addEventListener("click", ()=> {
             if(tab.innerHTML.toLowerCase() === "detail") animeElem.detail();
             if(tab.innerHTML.toLowerCase() === "synopsis") animeElem.synopsis();
+            if(tab.innerHTML.toLowerCase() === "trailer") animeElem.trailer();
         });
     });
 }

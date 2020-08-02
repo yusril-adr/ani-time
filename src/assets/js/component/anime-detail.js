@@ -70,8 +70,9 @@ class AnimeDetail extends HTMLElement {
             <div class="row">
                 <div class="col s12">
                 <ul class="tabs tabs-fixed-width light-blue darken-4">
-                    <li class="tab col s6"><a class="tab-text">Synopsis</a></li>
-                    <li class="tab col s6"><a class="tab-text">Detail</a></li>
+                    <li class="tab col s4"><a class="tab-text">Synopsis</a></li>
+                    <li class="tab col s4"><a class="tab-text">Detail</a></li>
+                    <li class="tab col s4"><a class="tab-text">Trailer</a></li>
                 </ul>
                 </div>
             </div>
@@ -88,8 +89,8 @@ class AnimeDetail extends HTMLElement {
     synopsis() {
         const anime = this.anime;
         const contentElem = this.querySelector(".anime-content");
-        contentElem.classList.add("fade");
 
+        contentElem.classList.add("fade");
         setTimeout( () => {
             if (contentElem.classList.contains("fade")) contentElem.classList.remove("fade");
         },300);
@@ -228,12 +229,51 @@ class AnimeDetail extends HTMLElement {
         });
     }
 
+    trailer() {
+      const anime = this.anime; 
+      const contentElem = this.querySelector(".anime-content");
+
+      let trailer = this.anime.trailer_url;
+      if( trailer === "null" || !trailer ) trailer = undefined;
+
+      contentElem.classList.add("fade");
+      setTimeout( () => {
+          if (contentElem.classList.contains("fade")) contentElem.classList.remove("fade");
+      },300);
+      
+      if(trailer) {
+        contentElem.innerHTML =
+        `
+        <section class="col s12 trailer light-blue-text">
+            <h5>Trailer</h5><hr>
+
+            <div class="row">
+              <div class="col s12 m8 offset-m2 "> 
+                <div class="video-container">
+                  <iframe width="853" height="480" src="${anime.trailer_url.replace("autoplay=1", "autoplay=0")}" frameborder="0" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+        </section>
+        `;
+      } else {
+        contentElem.innerHTML =
+        `
+        <section class="col s12 trailer light-blue-text">
+            <h5>Trailer</h5><hr>
+
+            <h4 class="blue-grey-text text-darken-2 center-align">There is no trailer yet.</h4>
+        </section>
+        `;
+      }
+  }
+
     noInternet() {
         this.innerHTML = 
         `
         <div class="container empty-container center-align">
           <div class="empty-text">
-            <h1><i class="fas fa-exclamation-circle"></i></h1>
+            <i class="material-icons large">portable_wifi_off</i>
             <h4>No Internet Access.</h4>
           </div>
         </div>
@@ -245,7 +285,7 @@ class AnimeDetail extends HTMLElement {
       `
       <div class="container empty-container center-align">
         <div class="empty-text">
-          <h1><i class="fas fa-exclamation-circle"></i></h1>
+          <i class="material-icons large">error_outline</i>
           <h4>Something went wrong.</h4>
         </div>
       </div>

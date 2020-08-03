@@ -20,7 +20,7 @@ const loadSetting = () => {
     document.querySelector("#delete-btn").addEventListener("click", () => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "All your saved list will be deleted, you won't be able to revert this!",
+            text: "All your saved list will be deleted and you won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -31,7 +31,7 @@ const loadSetting = () => {
                 deleteList();
                 Swal.fire(
                     'Deleted!',
-                    'Your file has been deleted.',
+                    'Your list has been deleted.',
                     'success'
                 )
             }

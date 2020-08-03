@@ -1,9 +1,13 @@
 import '../component/home-carousel.js';
-import { getUser } from '../db.js';
-import Swal from 'sweetalert2';
+import { getUser, updateUser } from '../db.js';
+
+// Import logo
+import logoImg from '../../img/logo.png';
 
 const loadHome = async () => {
     const base_url = "https://api.jikan.moe/v3";
+
+    document.querySelector(".logo-img").setAttribute("src", logoImg);
 
     getUser()
     .then( data => {
@@ -103,7 +107,7 @@ const loadHome = async () => {
             html: `
                 <div class= "about">
                     <span>Created by Yusril A. P.</span>
-                    <span>Logo by Yusril A. P.</span>
+                    <span>Logo by Dwi Randi R.</span>
                     <span>Thanks to <a href="https://jikan.moe">jikan API</a></span>
                 </div>
             `,
@@ -114,7 +118,11 @@ const loadHome = async () => {
                     <a href="https://github.com/yusril-adr"><i class="fab fa-github"></i></a>
                 </div>
             `,
-            icon: 'info',
+            // icon: 'info',
+            imageUrl: "icon.png",
+            imageAlt: "ANi-TIME Icon",
+            imageWidth: 100,
+            imageHeight: 100,
         })
     });
 }

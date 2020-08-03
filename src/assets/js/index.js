@@ -1,5 +1,5 @@
 import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize.min';
+import 'materialize-css/dist/js/materialize.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'material-design-icons/iconfont/material-icons.css';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -7,7 +7,23 @@ import 'owl.carousel';
 
 import "../css/style.css";
 
+// Import unknwon image
+import "../img/unknown.png";
+
 import { loadPage, backPage } from "./loadPage.js";
+
+// Register Service Worker
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+      navigator.serviceWorker.register("service-worker.js")
+    });
+} else {
+    Swal.fire({
+        title: 'PWA is not supported by this browser',
+        text: 'Some feature may not available',
+        icon: 'warning',
+    })
+}
 
 const isBack = (now, then) => {
     const pageOfList = [

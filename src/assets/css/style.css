@@ -103,6 +103,14 @@
 
 /* Global Section */
 
+.swal2-container {
+    padding: .625rem 2rem;
+}
+
+.swal2-popup {
+    border-radius: 1.3rem;
+}
+
 .brand-logo {
     font-family: "Recursive", monospace;
     letter-spacing: 1px;
@@ -236,6 +244,34 @@ anime-item .item-subcaption span {
     overflow: hidden;
 }
 
+.sidenav .user-view .logo-img {
+    margin: auto;
+    border-radius: 0;
+}
+
+.sidenav .user-view .user-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 1rem 0;
+}
+
+.sidenav .user-view .user-container .material-icons {
+    font-size: 3rem;
+    margin-right: 1rem;
+}
+
+.sidenav .user-view .user-container .name {
+    margin-top: 0;
+}
+
+.sidenav .user-view .user-container .email {
+    padding-bottom: 0;
+}
+
 .about {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -251,6 +287,7 @@ anime-item .item-subcaption span {
 
 .about-footer {
     width: 100%;
+    font-size: 1.5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

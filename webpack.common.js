@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const { GenerateSW } = require('workbox-webpack-plugin');
+const { InjectManifest } = require('workbox-webpack-plugin');
  
 module.exports = {
     entry: {
@@ -68,36 +68,34 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/index.html",
             chunks: ['app'],
-            // favicon: "./src/assets/img/icon.png",
+            favicon: "./src/assets/img/icon.png",
             filename: "index.html"
         }),
         // Webpack PWA Manifest Plugin
-        // new WebpackPwaManifest({
-        //     filename: "manifest.json",
-        //     name: "ANi-TIME",
-        //     short_name: "ANi-TIME",
-        //     description: "List your anime anytime.",
-        //     start_url: "/",
-        //     display: "standalone",
-        //     background_color: "#01579b",
-        //     theme_color: "#0277bd",
-        //     inject: true,
-        //     fingerprints: true,
-        //     ios: true,
-        //     icons: [
-        //         {
-        //             src: path.resolve('src/assets/img/icon.png'),
-        //             sizes: [192, 256, 384, 512],
-        //             ios: true
-        //         }
-        //     ],
-        // }),
+        new WebpackPwaManifest({
+            filename: "manifest.json",
+            name: "ANi-TIME",
+            short_name: "ANi-TIME",
+            description: "List your anime anytime.",
+            start_url: "/",
+            display: "standalone",
+            background_color: "#01579b",
+            theme_color: "#0277bd",
+            inject: true,
+            fingerprints: true,
+            ios: true,
+            icons: [
+                {
+                    src: path.resolve('src/assets/img/icon.png'),
+                    sizes: [192, 256, 384, 512],
+                    ios: true
+                }
+            ],
+        }),
         // Workbox Webpack Plugin
-        // new GenerateSW({
-        //     swDest: 'service-worker.js',
-        //     clientsClaim: true,
-        //     skipWaiting: true,
-        //     cleanupOutdatedCaches: true
-        // })
+        new InjectManifest({
+            swSrc: './src/service-worker.js',
+            swDest: 'service-worker.js',
+        }),
     ]
 }

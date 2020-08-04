@@ -280,7 +280,7 @@ class AnimeDetail extends HTMLElement {
   }
 
     trailerCheck() {
-        fetch(this.anime.trailer)
+        fetch(this.anime.trailer_url)
         .catch( error => {
           if (error.message === "Failed to fetch") {
             const contentElem = this.querySelector(".anime-content");

@@ -87,7 +87,7 @@ class AnimeDetail extends HTMLElement {
     }
 
     imageCheck() {
-        fetch(this.anime.image_url)
+        fetch(this.anime.image_url, {mode: "no-cors"})
         .catch( error => {
           if (error.message === "Failed to fetch") {
             this.querySelector(".anime-img").setAttribute("src", "assets/img/unknown.png");
@@ -280,7 +280,7 @@ class AnimeDetail extends HTMLElement {
   }
 
     trailerCheck() {
-        fetch(this.anime.trailer_url)
+        fetch(this.anime.trailer_url, {mode: "no-cors"})
         .catch( error => {
           if (error.message === "Failed to fetch") {
             const contentElem = this.querySelector(".anime-content");

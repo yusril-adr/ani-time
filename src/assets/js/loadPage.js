@@ -1,4 +1,4 @@
-import { getUser } from './db.js';
+import { getUser, updateUser } from './db.js';
 import notFoundContent from '../content/page-404.html'
 import homeContent from '../content/home.html';
 import loadHome from './pages/home.js';
@@ -182,6 +182,19 @@ const loadJS = () => {
     if ( page.includes("?") ) {
         page = page.slice(0, page.indexOf("?"))
     }
+
+    getUser()
+    .then( data => {
+        if (!data) {
+            const newData = {
+                id : 0,
+                name : "User",
+                email : "user@mail.com"
+            }
+
+            updateUser(newData);
+        }
+    })
 
     switch(page) {
         case 'home':

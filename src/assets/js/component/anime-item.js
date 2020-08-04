@@ -38,7 +38,7 @@ class AnimeItem extends HTMLElement {
     }
 
     imageCheck() {
-        fetch(this.anime.image_url)
+        fetch(this.anime.image_url, {mode: "no-cors"})
         .catch( error => {
             if (error.message === "Failed to fetch") {
                 this.querySelector(".anime-img").setAttribute("src", "assets/img/unknown.png");

@@ -29,7 +29,7 @@ class Homeitem extends HTMLElement {
     imageCheck() {
         fetch(this.anime.image_url)
         .catch(error => {
-            if (error.message === "Failed to fetch") {
+            if (error.message === "Failed to fetch", {mode: "no-cors"}) {
                 this.querySelector(".anime-img").setAttribute("src", "assets/img/unknown.png");
             }
         })

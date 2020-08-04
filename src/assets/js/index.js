@@ -10,7 +10,6 @@ import "../css/style.css";
 // Import unknwon image
 import "../img/unknown.png";
 
-import { getUser, updateUser } from './db.js';
 import { loadPage, backPage } from "./loadPage.js";
 
 // Register Service Worker
@@ -44,19 +43,6 @@ const isBack = (now, then) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    getUser()
-    .then( data => {
-        if (!data) {
-            const newData = {
-                id : 0,
-                name : "User",
-                email : "user@mail.com"
-            }
-
-            updateUser(newData);
-        }
-    })
-
     loadPage();
 
     const loading = document.querySelector(".loading-container");

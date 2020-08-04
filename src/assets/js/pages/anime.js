@@ -51,6 +51,28 @@ const loadAnime = async () => {
 
             notSaved();
         }
+    }).catch( error => {
+        // For browser doesnt support idb
+        fetch(`${base_url}/anime/${animeId}`)
+        .then( response => {
+            if ( response.status !== 200 ) { 
+                return Promise.reject();
+            }
+
+            return response.json();
+        }).then( anime => {
+            animeData = anime;
+
+            animeElem.load = anime;
+        }).catch( error => {
+            if (error.message === "Failed to fetch") {
+                animeElem.noInternet();
+            } else {
+                animeElem.error();
+            }
+        });
+
+        notSaved();
     });
     
     // Save to Db

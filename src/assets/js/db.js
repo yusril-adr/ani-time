@@ -25,6 +25,18 @@ const updateUser = user => {
     })
 }
 
+const addAnime= anime => {
+    dbPromised
+    .then( db => {
+        const tx = db.transaction("anime-list", "readwrite");
+        const store = tx.objectStore("anime-list");
+        store.put(anime);
+        return tx.complete;
+    }).catch( error => { 
+        M.toast({html: 'Feature not supported by browser'}) 
+    })
+}
+
 const getUser = () => {
     return new Promise( (resolve, reject) => { 
         dbPromised
@@ -34,7 +46,9 @@ const getUser = () => {
             return store.get(0);
         }).then( score => {
             resolve(score);
-        })
+        }).catch(error => {
+            reject(error);
+        });
     })
 }
 
@@ -42,33 +56,16 @@ const getList = () => {
     return new Promise( (resolve, reject) => {
       dbPromised
         .then( db => {
-          const tx = db.transaction("anime-list", "readonly");
-          const store = tx.objectStore("anime-list");
-          return store.getAll();
+            const tx = db.transaction("anime-list", "readonly");
+            const store = tx.objectStore("anime-list");
+            return store.getAll();
         }).then( list => {
-          resolve(list);
+            resolve(list);
+        }).catch(error => {
+            reject(error);
         });
     });
 };
-
-const deleteList = () => {
-    dbPromised
-    .then( db => {
-        const tx = db.transaction("anime-list", "readwrite");
-        const store = tx.objectStore("anime-list");
-        return store.clear();
-    });
-}
-
-const addAnime= anime => {
-    dbPromised
-    .then( db => {
-        const tx = db.transaction("anime-list", "readwrite");
-        const store = tx.objectStore("anime-list");
-        store.put(anime);
-        return tx.complete;
-    });
-}
 
 const getAnime = id => {
     return new Promise( (resolve, reject) => {
@@ -79,9 +76,22 @@ const getAnime = id => {
             return store.get(id);
         }).then( anime => {
             resolve(anime);
+        }).catch(error => {
+            reject(error);
         });
     });
 };
+
+const deleteList = () => {
+    dbPromised
+    .then( db => {
+        const tx = db.transaction("anime-list", "readwrite");
+        const store = tx.objectStore("anime-list");
+        return store.clear();
+    }).catch( error => { 
+        M.toast({html: 'Feature not supported by browser'}) 
+    })
+}
 
 const deleteAnime= id => {
     dbPromised
@@ -89,7 +99,9 @@ const deleteAnime= id => {
         const tx = db.transaction("anime-list", "readwrite");
         const store = tx.objectStore("anime-list");
         return store.delete(id);
-    });
+    }).catch( error => { 
+        M.toast({html: 'Feature not supported by browser'}) 
+    })
 }
 
 export { updateUser, getUser, addAnime, getList, getAnime, deleteList, deleteAnime };

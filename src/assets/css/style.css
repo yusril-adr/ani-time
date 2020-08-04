@@ -387,6 +387,10 @@ anime-item .item-subcaption span {
     border-radius: 7px;
 }
 
+.anime-page .trailer-noNetwork {
+    margin-top: 2rem;
+}
+
 /* Setting Section */
 .setting-container {
     margin-top: 2rem;

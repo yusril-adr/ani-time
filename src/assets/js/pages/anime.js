@@ -41,8 +41,12 @@ const loadAnime = async () => {
                 animeData = anime;
 
                 animeElem.load = anime;
-            }).catch( () => {
-                animeElem.error();
+            }).catch( error => {
+                if (error.message === "Failed to fetch") {
+                    animeElem.noInternet();
+                } else {
+                    animeElem.error();
+                }
             });
 
             notSaved();

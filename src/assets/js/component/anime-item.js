@@ -22,7 +22,7 @@ class AnimeItem extends HTMLElement {
         this.innerHTML = 
         `
         <div class="item-img">
-            <img src="${this.anime.image_url}" alt="${this.anime.title} Banner">
+            <img class="anime-img" src="${this.anime.image_url}" alt="${this.anime.title} Banner">
         </div>
         <div class="item-caption">
             <span class="item-title">${title}</span>
@@ -33,6 +33,17 @@ class AnimeItem extends HTMLElement {
             </div>
         </div>
         `;
+
+        this.imageCheck();
+    }
+
+    imageCheck() {
+        fetch(this.anime.image_url)
+        .catch( error => {
+            if (error.message === "Failed to fetch") {
+                this.querySelector(".anime-img").setAttribute("src", "assets/img/unknown.png");
+            }
+        })
     }
 }
 

@@ -16,12 +16,23 @@ class Homeitem extends HTMLElement {
         <a href="#anime?id=${this.anime.mal_id}">
             <div class="item-container center-align">
                 <div class="img-container">
-                    <img src="${this.anime.image_url}" alt="${title}-Banner">
+                    <img class="anime-img" src="${this.anime.image_url}" alt="${title}-Banner">
                 </div>
                 <span class="carousel-title black-text">${title}</span>
             </div>
         </a>
         `;
+
+        this.imageCheck();
+    }
+
+    imageCheck() {
+        fetch(this.anime.image_url)
+        .catch(error => {
+            if (error.message === "Failed to fetch") {
+                this.querySelector(".anime-img").setAttribute("src", "assets/img/unknown.png");
+            }
+        })
     }
 }
 

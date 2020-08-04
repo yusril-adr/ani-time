@@ -21,8 +21,12 @@ const fetchList = (type) => {
         }).slice(0, 10);
     }).then( animeList => {
         listElement.load = animeList;
-    }).catch( () => {
-        listElement.error();
+    }).catch( error => {
+        if (error.message === "Failed to fetch") {
+            listElement.noInternet();
+        } else {
+            listElement.error();
+        }
     });
 }
 

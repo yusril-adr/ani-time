@@ -37,7 +37,16 @@ class HomeCarousel extends HTMLElement {
         this.innerHTML = 
         `
         <div class="center-align">
-            <h4>No Internet Access.</h4>
+            <h4>No internet access.</h4>
+        </div>
+        `;
+    }
+
+    error() {
+        this.innerHTML = 
+        `
+        <div class="center-align">
+            <h4>Something went wrong.</h4>
         </div>
         `;
     }

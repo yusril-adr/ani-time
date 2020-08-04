@@ -59,7 +59,7 @@ class AnimeDetail extends HTMLElement {
         <div class="anime-header light-blue darken-4">
             <div class="container header-container">
                 <div class="img-container">
-                    <img src="${anime.image_url}" alt="${anime.title} banner">
+                    <img class="anime-img" src="${anime.image_url}" alt="${anime.title} banner">
                 </div>
                 <div class="header-caption white-text">
                     <span class="header-title">${anime.title}</span>
@@ -82,8 +82,17 @@ class AnimeDetail extends HTMLElement {
             
         </div>
         `;
-
+        this.imageCheck();
         this.synopsis();
+    }
+
+    imageCheck() {
+        fetch(this.anime.image_url)
+        .catch( error => {
+          if (error.message === "Failed to fetch") {
+            this.querySelector(".anime-img").setAttribute("src", "assets/img/unknown.png");
+          }
+        })
     }
 
     synopsis() {
@@ -242,7 +251,7 @@ class AnimeDetail extends HTMLElement {
       },300);
       
       if(trailer) {
-        contentElem.innerHTML =
+        contentElem.innerHTML = 
         `
         <section class="col s12 trailer light-blue-text">
             <h5>Trailer</h5><hr>
@@ -256,6 +265,8 @@ class AnimeDetail extends HTMLElement {
             </div>
         </section>
         `;
+
+        this.trailerCheck();
       } else {
         contentElem.innerHTML =
         `
@@ -268,13 +279,33 @@ class AnimeDetail extends HTMLElement {
       }
   }
 
+    trailerCheck() {
+        fetch(this.anime.trailer)
+        .catch( error => {
+          if (error.message === "Failed to fetch") {
+            const contentElem = this.querySelector(".anime-content");
+            contentElem.innerHTML =
+            `
+            <section class="col s12 trailer light-blue-text">
+                <h5>Trailer</h5><hr>
+
+                <div class="blue-grey-text text-darken-2 center-align trailer-noNetwork">
+                  <i class="material-icons large">portable_wifi_off</i>
+                  <h4>Internet access needed.</h4>
+                </div>
+            </section>
+            `;
+          }
+        })
+    }
+
     noInternet() {
         this.innerHTML = 
         `
         <div class="container empty-container center-align">
           <div class="empty-text">
             <i class="material-icons large">portable_wifi_off</i>
-            <h4>No Internet Access.</h4>
+            <h4>No internet access.</h4>
           </div>
         </div>
         `

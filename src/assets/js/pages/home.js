@@ -1,5 +1,4 @@
 import '../component/home-carousel.js';
-import { getUser, updateUser } from '../db.js';
 
 // Import logo
 import logoImg from '../../img/logo.png';
@@ -8,19 +7,6 @@ const loadHome = async () => {
     const base_url = "https://api.jikan.moe/v3";
 
     document.querySelector(".logo-img").setAttribute("src", logoImg);
-
-    getUser()
-    .then( data => {
-        if (!data) {
-            const newData = {
-                id : 0,
-                name : "User",
-                email : "user@mail.com"
-            }
-
-            updateUser(newData);
-        }
-    })
 
     // Initiating Date & Season
     const date = new Date();
@@ -47,9 +33,13 @@ const loadHome = async () => {
     }).then( animeList => {
         const listElement = document.querySelector("home-carousel.today-list");
         listElement.load = animeList;
-    }).catch( () => {
+    }).catch( error => {
         const listElement = document.querySelector("home-carousel.today-list");
-        listElement.noInternet();
+        if (error.message === "Failed to fetch") {
+            listElement.noInternet();
+        } else {
+            listElement.error();
+        }
     });
 
     // Fetch Top List
@@ -61,9 +51,13 @@ const loadHome = async () => {
     }).then( animeList => {
         const listElement = document.querySelector("home-carousel.top-list");
         listElement.load = animeList;
-    }).catch( () => {
+    }).catch( error => {
         const listElement = document.querySelector("home-carousel.top-list");
-        listElement.noInternet();
+        if (error.message === "Failed to fetch") {
+            listElement.noInternet();
+        } else {
+            listElement.error();
+        }
     });
 
     // Fetch Season List
@@ -75,9 +69,13 @@ const loadHome = async () => {
     }).then( animeList => {
         const listElement = document.querySelector("home-carousel.season-list");
         listElement.load = animeList;
-    }).catch( () => {
+    }).catch( error => {
         const listElement = document.querySelector("home-carousel.season-list");
-        listElement.noInternet();
+        if (error.message === "Failed to fetch") {
+            listElement.noInternet();
+        } else {
+            listElement.error();
+        }
     });
 
     $('.owl-carousel').owlCarousel({

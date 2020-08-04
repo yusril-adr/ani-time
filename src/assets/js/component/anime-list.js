@@ -81,10 +81,8 @@ class AnimeList extends HTMLElement {
         href.appendChild(itemElement);
         this.appendChild(href);
 
-        if( idx !== this.list.length - 1 ) {
-            const divider = document.createElement("hr");
-            this.appendChild(divider);
-        }
+        const divider = document.createElement("hr");
+        this.appendChild(divider);
     });
   }
 

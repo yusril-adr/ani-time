@@ -18,8 +18,12 @@ const searchList = (word) => {
     }).then( animeList => {
         if (animeList.length > 0) listElement.load = animeList;
         else listElement.isEmpty();
-    }).catch( () => {
-        listElement.error();
+    }).catch( error => {
+        if (error.message === "Failed to fetch") {
+            listElement.noInternet();
+        } else {
+            listElement.error();
+        }
     });
 };
 

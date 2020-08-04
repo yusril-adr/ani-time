@@ -21,8 +21,12 @@ const updateList = (year, season, type) => {
         } else {
             listElement.isEmpty();
         }
-    }).catch( () => {
-        listElement.error();
+    }).catch( error => {
+        if (error.message === "Failed to fetch") {
+            listElement.noInternet();
+        } else {
+            listElement.error();
+        }
     });
 }
 

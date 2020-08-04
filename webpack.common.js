@@ -79,7 +79,7 @@ module.exports = {
             description: "List your anime anytime.",
             start_url: "/",
             display: "standalone",
-            background_color: "#01579b",
+            background_color: "#006bbd",
             theme_color: "#0277bd",
             inject: true,
             fingerprints: true,

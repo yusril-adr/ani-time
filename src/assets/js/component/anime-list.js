@@ -68,9 +68,13 @@ class AnimeList extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = "";
-    
-    this.list.forEach( (anime, idx) => {
+    const row = document.createElement("div");
+    row.classList.add("row")
+
+    this.innerHTML = "";  
+    this.list.forEach( anime => {
+        const colomn = document.createElement("div");
+        colomn.classList.add("col", "s12", "m6", "l4");
         const href = document.createElement("a");
         href.setAttribute("href", `#anime?id=${anime.mal_id}`);
 
@@ -79,11 +83,15 @@ class AnimeList extends HTMLElement {
         itemElement.load = anime;
 
         href.appendChild(itemElement);
-        this.appendChild(href);
+        colomn.appendChild(href);
 
         const divider = document.createElement("hr");
-        this.appendChild(divider);
+        colomn.appendChild(divider);
+
+        row.appendChild(colomn);
     });
+
+    this.appendChild(row)
   }
 
   isEmpty() {

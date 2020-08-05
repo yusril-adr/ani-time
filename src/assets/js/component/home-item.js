@@ -5,8 +5,8 @@ class Homeitem extends HTMLElement {
     }
     render() {
         let title;
-        if(this.anime.title.length > 30) {
-            title = this.anime.title.slice(0, 30)+"...";
+        if(this.anime.title.length > 18) {
+            title = this.anime.title.slice(0, 18)+"...";
         } else {
             title = this.anime.title;
         }

@@ -193,6 +193,16 @@ anime-item {
 
 anime-item .item-img {
     max-width: 26vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    overflow: hidden;
 }
 
 anime-item .item-img img {
@@ -484,6 +494,24 @@ anime-item .item-subcaption span {
 /* Responsive Section */
 
 @media (min-width: 601px) {
+    anime-item .item-img {
+        width: 35vw;
+        height: 190px;
+    }
+    
+    anime-item .item-img img {
+        width: auto;
+        height: 100%;
+    }
+
+    anime-item .item-caption .item-title {
+        font-size: 2vw;
+    }
+    
+    anime-item .item-caption .item-subcaption {
+        font-size: 1.5vw;
+    }
+
     .home-page .item-container .img-container {
         height: 25vw;
     }
@@ -497,15 +525,7 @@ anime-item .item-subcaption span {
 
 @media (min-width: 663px) {
     anime-item .item-img {
-        max-width: 12vw;
-    }
-    
-    anime-item .item-caption .item-title {
-        font-size: 3vw;
-    }
-    
-    anime-item .item-caption .item-subcaption {
-        font-size: 2vw;
+        width: 25vw;
     }
 
     .header-caption .header-title {
@@ -518,6 +538,17 @@ anime-item .item-subcaption span {
 }
 
 @media (min-width: 993px) {
+    anime-item .item-img {
+        width: 30vw;
+    }
+    anime-item .item-caption .item-title {
+        font-size: 1.3vw;
+    }
+    
+    anime-item .item-caption .item-subcaption {
+        font-size: 1vw;
+    }
+
     .home-page .item-container .img-container {
         height: 21vw;
     }
@@ -534,5 +565,11 @@ anime-item .item-subcaption span {
 @media (min-width: 1024px) {
     .home-page .item-container .img-container {
         height: 17vw;
+    }
+}
+
+@media (min-width: 1201px) {
+    anime-item .item-img {
+        height: 230px;
     }
 }

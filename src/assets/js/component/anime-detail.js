@@ -67,7 +67,7 @@ class AnimeDetail extends HTMLElement {
                 </div>
             </div>
 
-            <div class="row">
+            <div class="container row">
                 <div class="col s12">
                 <ul class="tabs tabs-fixed-width light-blue darken-4">
                     <li class="tab col s4"><a class="tab-text">Synopsis</a></li>

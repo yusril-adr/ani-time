@@ -289,7 +289,7 @@ class AnimeDetail extends HTMLElement {
             <section class="col s12 trailer light-blue-text">
                 <h5>Trailer</h5><hr>
 
-                <div class="blue-grey-text text-darken-2 center-align trailer-noNetwork">
+                <div class="center-align trailer-noNetwork">
                   <i class="material-icons large">portable_wifi_off</i>
                   <h4>Internet access needed.</h4>
                 </div>

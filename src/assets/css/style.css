@@ -388,6 +388,7 @@ anime-item .item-subcaption span {
 }
 
 .anime-page .trailer-noNetwork {
+    color: #9e9e9e;
     margin-top: 2rem;
 }
 

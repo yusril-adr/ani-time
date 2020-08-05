@@ -88,7 +88,8 @@ module.exports = {
                 {
                     src: path.resolve('src/assets/img/icon.png'),
                     sizes: [192, 256, 384, 512],
-                    ios: true
+                    ios: true,
+                    purpose: "maskable any"
                 }
             ],
         }),

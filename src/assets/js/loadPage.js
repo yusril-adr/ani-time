@@ -229,7 +229,7 @@ const loadJS = () => {
     // Sidnav
     const sideNav = document.querySelector('.sidenav');
     if (sideNav) {
-        getUser(0)
+        getUser()
         .then( data => {
             sideNav.querySelector(".name").innerHTML = data.name;
             sideNav.querySelector(".email").innerHTML = data.email;

@@ -37,16 +37,4 @@ registerRoute(
 //   })
 // );
 
-// Response unknown image when offline
-self.addEventListener("fetch", (event) => {
-    if (event.request.url.includes("https://cdn.myanimelist.net")) {
-        event.respondWith( 
-            fetch(event.request)
-            .then( response => {
-                return response || fetch("assets/img/unknown.png");
-            })
-        );
-    }
-})
-
 precacheAndRoute(self.__WB_MANIFEST);

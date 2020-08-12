@@ -1,11 +1,12 @@
 {
-  "name": "ANi-TIME",
+  "name": "ani-time",
   "version": "1.0.0",
   "description": "List your anime anytime.",
   "main": "src/assets/js/index.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
-    "dev": "webpack-dev-server --config webpack.dev.js"
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "graph": "git log --all --oneline --text --decorate --graph"
   },
   "repository": {
     "type": "git",

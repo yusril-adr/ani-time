@@ -273,7 +273,7 @@ class AnimeDetail extends HTMLElement {
         <section class="col s12 trailer light-blue-text">
             <h5>Trailer</h5><hr>
 
-            <h4 class="blue-grey-text text-darken-2 center-align">There is no trailer yet.</h4>
+            <h4 class="center-align" style="color: #9e9e9e;">There is no trailer yet.</h4>
         </section>
         `;
       }

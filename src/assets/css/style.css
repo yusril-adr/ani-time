@@ -254,6 +254,10 @@ anime-item .item-subcaption span {
     overflow: hidden;
 }
 
+.home-page h5 {
+    display: inline-block;
+}
+
 .sidenav .user-view .logo-img {
     margin: auto;
     border-radius: 0;

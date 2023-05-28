@@ -1,22 +1,20 @@
 import "../component/anime-list.js";
 
 const searchList = (word) => {
-    const base_url = "https://api.jikan.moe/v3";
+    const base_url = "https://api.jikan.moe/v4";
     const listElement = document.querySelector(".search-page anime-list");
 
     listElement.connectedCallback();
 
-    fetch(`${base_url}/search/anime?q=${word}`)
+    fetch(`${base_url}/anime?q=${word}&sfw=true`)
     .then( response => {
         if ( response.status !== 200 ) { 
             return Promise.reject();
         }
 
         return response.json();
-    }).then( json => {
-        return json.results;
     }).then( animeList => {
-        if (animeList.length > 0) listElement.load = animeList;
+        if (animeList.data.length > 0) listElement.load = animeList.data;
         else listElement.isEmpty();
     }).catch( error => {
         if (error.message === "Failed to fetch") {

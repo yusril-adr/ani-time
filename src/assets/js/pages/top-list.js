@@ -1,26 +1,22 @@
 import "../component/anime-list.js";
 
+const dataLimit = 10;
+
 const fetchList = (type) => {
-    const base_url = "https://api.jikan.moe/v3";
+    const base_url = "https://api.jikan.moe/v4";
     const listElement = document.querySelector(".top-list-page anime-list");
 
     listElement.connectedCallback();
 
-    fetch(`${base_url}/top/anime`)
+    fetch(`${base_url}/top/anime?sfw=${true}&limit=${dataLimit}`)
     .then( response => {
         if ( response.status !== 200 ) { 
             return Promise.reject();
         }
 
         return response.json();
-    }).then( json => {
-        if (!type) return json.top.slice(0, 10);
-
-        return json.top.filter( anime => {
-            return !anime.r18 && anime.type === type;
-        }).slice(0, 10);
     }).then( animeList => {
-        listElement.load = animeList;
+        listElement.load = animeList.data;
     }).catch( error => {
         if (error.message === "Failed to fetch") {
             listElement.noInternet();

@@ -3,8 +3,10 @@ import '../component/home-carousel.js';
 // Import logo
 import logoImg from '../../img/logo.png';
 
+const dataLimit = 10;
+
 const loadHome = async () => {
-    const base_url = "https://api.jikan.moe/v3";
+    const base_url = "https://api.jikan.moe/v4";
 
     document.querySelector(".logo-img").setAttribute("src", logoImg);
 
@@ -25,14 +27,12 @@ const loadHome = async () => {
     }
 
     // Fetch Today List
-    await fetch(`${base_url}/schedule/${day}`)
+    await fetch(`${base_url}/schedules?sfw=true&filter=${day}&limit=${dataLimit}`)
     .then( response => {
         return response.json();
-    }).then( json => {
-        return json[day];
-    }).then( animeList => {
+    }).then( responseJson => {
         const listElement = document.querySelector("home-carousel.today-list");
-        listElement.load = animeList;
+        listElement.load = responseJson.data;
     }).catch( error => {
         const listElement = document.querySelector("home-carousel.today-list");
         if (error.message === "Failed to fetch") {
@@ -43,14 +43,12 @@ const loadHome = async () => {
     });
 
     // Fetch Top List
-    await fetch(`${base_url}/top/anime`)
+    await fetch(`${base_url}/top/anime?limit=${dataLimit}&page=${1}`)
     .then( response => {
         return response.json();
-    }).then( json => {
-        return json.top.slice(0, 10);
-    }).then( animeList => {
+    }).then( responseJson => {
         const listElement = document.querySelector("home-carousel.top-list");
-        listElement.load = animeList;
+        listElement.load = responseJson.data;
     }).catch( error => {
         const listElement = document.querySelector("home-carousel.top-list");
         if (error.message === "Failed to fetch") {
@@ -61,15 +59,14 @@ const loadHome = async () => {
     });
 
     // Fetch Season List
-    await fetch(`${base_url}/season/${year}/${season}`)
+    await fetch(`${base_url}/seasons/${year}/${season}?limit=${dataLimit}`)
     .then( response => {
         return response.json();
-    }).then( json => {
-        return json.anime.slice(0, 10);
-    }).then( animeList => {
+    }).then( responseJson => {
         const listElement = document.querySelector("home-carousel.season-list");
-        listElement.load = animeList;
+        listElement.load = responseJson.data;
     }).catch( error => {
+        console.log(error)
         const listElement = document.querySelector("home-carousel.season-list");
         if (error.message === "Failed to fetch") {
             listElement.noInternet();

@@ -14,7 +14,7 @@ const notSaved = () => {
 }
 
 const loadAnime = async () => {
-    const base_url = "https://api.jikan.moe/v3";
+    const base_url = "https://api.jikan.moe/v4";
     const now = Date.now();
     const urlParams = location.hash.substr(location.hash.indexOf("?")+1);
     let animeId = parseInt(urlParams.slice(urlParams.indexOf("id=")+3)) || "";
@@ -38,9 +38,10 @@ const loadAnime = async () => {
 
                 return response.json();
             }).then( anime => {
-                animeData = anime;
+                console.log(anime)
+                animeData = anime.data;
 
-                animeElem.load = anime;
+                animeElem.load = anime.data;
             }).catch( error => {
                 if (error.message === "Failed to fetch") {
                     animeElem.noInternet();
@@ -61,9 +62,9 @@ const loadAnime = async () => {
 
             return response.json();
         }).then( anime => {
-            animeData = anime;
+            animeData = anime.data;
 
-            animeElem.load = anime;
+            animeElem.load = anime.data;
         }).catch( error => {
             if (error.message === "Failed to fetch") {
                 animeElem.noInternet();

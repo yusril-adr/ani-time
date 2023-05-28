@@ -1,23 +1,19 @@
 const updateList = (year, season, type) => {
-    const base_url = "https://api.jikan.moe/v3";
+    const base_url = "https://api.jikan.moe/v4";
     const listElement = document.querySelector("anime-list");
 
     listElement.connectedCallback();
 
-    fetch(`${base_url}/season/${year}/${season}`)
+    fetch(`${base_url}/seasons/${year}/${season}?sfw=true&filter=${type}`)
     .then( response => {
         if ( response.status !== 200 ) { 
             return Promise.reject();
         };
 
         return response.json();
-    }).then( json => {
-        return json.anime.filter( anime => {
-            return !anime.r18 && anime.type === type;
-        });
     }).then( animeList => {
-        if (animeList.length > 1) {
-            listElement.load = animeList;
+        if (animeList.data.length > 1) {
+            listElement.load = animeList.data;
         } else {
             listElement.isEmpty();
         }

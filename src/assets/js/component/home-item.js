@@ -4,11 +4,9 @@ class Homeitem extends HTMLElement {
         this.render();
     }
     render() {
-        let title;
+        let title = this.anime.title;
         if(this.anime.title.length > 18) {
             title = this.anime.title.slice(0, 18)+"...";
-        } else {
-            title = this.anime.title;
         }
         
         this.innerHTML = 
@@ -16,7 +14,7 @@ class Homeitem extends HTMLElement {
         <a href="#anime?id=${this.anime.mal_id}">
             <div class="item-container center-align">
                 <div class="img-container">
-                    <img class="anime-img" src="${this.anime.image_url}" alt="${title}-Banner">
+                    <img class="anime-img" src="${this.anime.images.jpg.image_url}" alt="${title}-Banner">
                 </div>
                 <span class="carousel-title black-text">${title}</span>
             </div>

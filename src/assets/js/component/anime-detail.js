@@ -59,7 +59,7 @@ class AnimeDetail extends HTMLElement {
         <div class="anime-header light-blue darken-4">
             <div class="container header-container">
                 <div class="img-container">
-                    <img class="anime-img" src="${anime.image_url}" alt="${anime.title} banner">
+                    <img class="anime-img" src="${anime.images.jpg.image_url}" alt="${anime.title} banner">
                 </div>
                 <div class="header-caption white-text">
                     <span class="header-title">${anime.title}</span>
@@ -87,7 +87,7 @@ class AnimeDetail extends HTMLElement {
     }
 
     imageCheck() {
-        fetch(this.anime.image_url, {mode: "no-cors"})
+        fetch(this.anime.images.jpg.image_url, {mode: "no-cors"})
         .catch( error => {
           if (error.message === "Failed to fetch") {
             this.querySelector(".anime-img").setAttribute("src", "assets/img/unknown.png");
@@ -242,7 +242,7 @@ class AnimeDetail extends HTMLElement {
       const anime = this.anime; 
       const contentElem = this.querySelector(".anime-content");
 
-      let trailer = this.anime.trailer_url;
+      let trailer = this.anime.trailer.url;
       if( trailer === "null" || !trailer ) trailer = undefined;
 
       contentElem.classList.add("fade");
@@ -259,7 +259,7 @@ class AnimeDetail extends HTMLElement {
             <div class="row">
               <div class="col s12 m8 offset-m2 "> 
                 <div class="video-container">
-                  <iframe width="853" height="480" src="${anime.trailer_url.replace("autoplay=1", "autoplay=0")}" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="853" height="480" src="${anime.trailer.url.replace("autoplay=1", "autoplay=0")}" frameborder="0" allowfullscreen></iframe>
                 </div>
               </div>
             </div>
@@ -280,7 +280,7 @@ class AnimeDetail extends HTMLElement {
   }
 
     trailerCheck() {
-        fetch(this.anime.trailer_url, {mode: "no-cors"})
+        fetch(this.anime.trailer.url, {mode: "no-cors"})
         .catch( error => {
           if (error.message === "Failed to fetch") {
             const contentElem = this.querySelector(".anime-content");

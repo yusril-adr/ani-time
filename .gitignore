@@ -1,7 +1,6 @@
 node_modules
 dist
 logo AniTime
-package-lock.json
 .firebase
 .firebaserc
 firebase.json

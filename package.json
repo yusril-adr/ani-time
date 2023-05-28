@@ -15,6 +15,9 @@
   "keywords": [
     "anime"
   ],
+  "engines": {
+    "node": "16.x"
+  },
   "author": "Yusril A. P.",
   "license": "MIT",
   "bugs": {
